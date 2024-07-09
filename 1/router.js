@@ -7,7 +7,6 @@ let lists = {
     fifth: `<div>This is the fifth page</div>`,
     other: `<div>Sorry, I can't find that page.</div>`,
 };
-
 function getContentFromHash(hash) {
     let contents;
     switch (hash) {
@@ -32,21 +31,20 @@ function getContentFromHash(hash) {
     }
     return contents;
 }
-
 function clickToHash(buttons, hash) {
     // let choosing: boolean[] = new Array(buttons.length)
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             if (i === 0) {
                 hash = '#/main';
-            } else {
+            }
+            else {
                 hash = '#/' + (i + 1).toString();
             }
             window.location.href = './1.html' + hash;
         });
     }
 }
-
 function shineButtons(buttons, idChosen) {
     if (idChosen < 5) {
         buttons[idChosen].className = "buttons chosen";
@@ -57,15 +55,14 @@ function shineButtons(buttons, idChosen) {
         }
     }
 }
-
 function textToText(text, element) {
     if (element !== null) {
         element.innerHTML = text;
-    } else {
+    }
+    else {
         throw "Error: No id called \'text\'!";
     }
 }
-
 function getShineButtons(buttons, hash) {
     let id;
     switch (hash) {
@@ -90,14 +87,14 @@ function getShineButtons(buttons, hash) {
     }
     shineButtons(buttons, id);
 }
-
 const buttons = document.querySelectorAll(".buttons");
 const text = document.querySelector("#text");
 let hash = window.location.hash;
 let content = getContentFromHash(hash);
 try {
     textToText(content, text);
-} catch (e) {
+}
+catch (e) {
     console.error(e);
 }
 clickToHash(buttons, hash);
@@ -109,7 +106,8 @@ window.addEventListener('hashchange', () => {
     getShineButtons(buttons, hash);
     try {
         textToText(content, text);
-    } catch (e) {
+    }
+    catch (e) {
         console.error(e);
     }
 });
