@@ -14,23 +14,23 @@ let lists: {
     other: `<div>Sorry, I can't find that page.</div>`,
 }
 
-export function getContentFromHash(hash: string): string {
+function getContentFromHash(hash: string): string {
     let contents: string
     switch (hash) {
         case '':
-        case '#main':
+        case '#/main':
             contents = lists.main
             break
-        case '#2':
+        case '#/2':
             contents = lists.second
             break
-        case '#3':
+        case '#/3':
             contents = lists.third
             break
-        case '#4':
+        case '#/4':
             contents = lists.fourth
             break
-        case '#5':
+        case '#/5':
             contents = lists.fifth
             break
         default:
@@ -40,14 +40,14 @@ export function getContentFromHash(hash: string): string {
     return contents
 }
 
-export function clickToHash(buttons: NodeListOf<Element>, hash: string): void {
-     // let choosing: boolean[] = new Array(buttons.length)
+function clickToHash(buttons: NodeListOf<Element>, hash: string): void {
+    // let choosing: boolean[] = new Array(buttons.length)
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             if (i === 0) {
-                hash = '#main'
+                hash = '#/main'
             } else {
-                hash = '#' + (i + 1).toString()
+                hash = '#/' + (i + 1).toString()
             }
             window.location.href = './1.html' + hash
 
@@ -56,7 +56,7 @@ export function clickToHash(buttons: NodeListOf<Element>, hash: string): void {
 }
 
 function shineButtons(buttons: NodeListOf<Element>, idChosen: number): void {
-    if(idChosen < 5) {
+    if (idChosen < 5) {
         buttons[idChosen].className = "buttons chosen"
     }
     for (let i = 0; i < buttons.length; i++) {
@@ -66,7 +66,7 @@ function shineButtons(buttons: NodeListOf<Element>, idChosen: number): void {
     }
 }
 
-export function textToText(text: string, element: Element | null): void {
+function textToText(text: string, element: Element | null): void {
     if (element !== null) {
         element.innerHTML = text
     } else {
@@ -74,23 +74,23 @@ export function textToText(text: string, element: Element | null): void {
     }
 }
 
-export function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
+function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
     let id: number
     switch (hash) {
         case '':
-        case '#main':
+        case '#/main':
             id = 0
             break
-        case '#2':
+        case '#/2':
             id = 1
             break
-        case '#3':
+        case '#/3':
             id = 2
             break
-        case '#4':
+        case '#/4':
             id = 3
             break
-        case '#5':
+        case '#/5':
             id = 4
             break
         default:

@@ -1,3 +1,4 @@
+"use strict";
 let lists = {
     main: `<div>This is the main page</div>`,
     second: `<div>This is the second page</div>`,
@@ -6,23 +7,23 @@ let lists = {
     fifth: `<div>This is the fifth page</div>`,
     other: `<div>Sorry, I can't find that page.</div>`,
 };
-export function getContentFromHash(hash) {
+function getContentFromHash(hash) {
     let contents;
     switch (hash) {
         case '':
-        case '#main':
+        case '#/main':
             contents = lists.main;
             break;
-        case '#2':
+        case '#/2':
             contents = lists.second;
             break;
-        case '#3':
+        case '#/3':
             contents = lists.third;
             break;
-        case '#4':
+        case '#/4':
             contents = lists.fourth;
             break;
-        case '#5':
+        case '#/5':
             contents = lists.fifth;
             break;
         default:
@@ -30,15 +31,15 @@ export function getContentFromHash(hash) {
     }
     return contents;
 }
-export function clickToHash(buttons, hash) {
+function clickToHash(buttons, hash) {
     // let choosing: boolean[] = new Array(buttons.length)
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             if (i === 0) {
-                hash = '#main';
+                hash = '#/main';
             }
             else {
-                hash = '#' + (i + 1).toString();
+                hash = '#/' + (i + 1).toString();
             }
             window.location.href = './1.html' + hash;
         });
@@ -54,7 +55,7 @@ function shineButtons(buttons, idChosen) {
         }
     }
 }
-export function textToText(text, element) {
+function textToText(text, element) {
     if (element !== null) {
         element.innerHTML = text;
     }
@@ -62,23 +63,23 @@ export function textToText(text, element) {
         throw "Error: No id called \'text\'!";
     }
 }
-export function getShineButtons(buttons, hash) {
+function getShineButtons(buttons, hash) {
     let id;
     switch (hash) {
         case '':
-        case '#main':
+        case '#/main':
             id = 0;
             break;
-        case '#2':
+        case '#/2':
             id = 1;
             break;
-        case '#3':
+        case '#/3':
             id = 2;
             break;
-        case '#4':
+        case '#/4':
             id = 3;
             break;
-        case '#5':
+        case '#/5':
             id = 4;
             break;
         default:
