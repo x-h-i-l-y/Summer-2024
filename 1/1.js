@@ -1,17 +1,18 @@
-var lists = {
-    main: "<div>This is the main page</div>",
-    second: "<div>This is the second page</div>",
-    third: "<div>This is the third page</div>",
-    fourth: "<div>This is the fourth page</div>",
-    fifth: "<div>This is the fifth page</div>",
-    other: "<div>Sorry, I can't find that page.</div>",
+"use strict";
+let lists = {
+    main: `<div>This is the main page</div>`,
+    second: `<div>This is the second page</div>`,
+    third: `<div>This is the third page</div>`,
+    fourth: `<div>This is the fourth page</div>`,
+    fifth: `<div>This is the fifth page</div>`,
+    other: `<div>Sorry, I can't find that page.</div>`,
 };
 console.log(window.location);
-var buttons = document.querySelectorAll(".buttons");
-var text = document.querySelector("#text");
-var hash = window.location.hash;
+const buttons = document.querySelectorAll(".buttons");
+const text = document.querySelector("#text");
+let hash = window.location.hash;
 function getContentFromHash(hash) {
-    var contents;
+    let contents;
     switch (hash) {
         case '':
         case '#main':
@@ -35,7 +36,8 @@ function getContentFromHash(hash) {
     return contents;
 }
 function clickToHash(buttons) {
-    var _loop_1 = function (i) {
+    // let choosing: boolean[] = new Array(buttons.length)
+    for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             if (i === 0) {
                 hash = '#main';
@@ -45,17 +47,13 @@ function clickToHash(buttons) {
             }
             window.location.href = './1.html' + hash;
         });
-    };
-    // let choosing: boolean[] = new Array(buttons.length)
-    for (var i = 0; i < buttons.length; i++) {
-        _loop_1(i);
     }
 }
 function shineButtons(buttons, idChosen) {
     if (idChosen < 5) {
         buttons[idChosen].className = "buttons chosen";
     }
-    for (var i = 0; i < buttons.length; i++) {
+    for (let i = 0; i < buttons.length; i++) {
         if (i != idChosen) {
             buttons[i].className = "buttons";
         }
@@ -70,7 +68,7 @@ function textToText(text, element) {
     }
 }
 function getShineButtons(buttons, hash) {
-    var id;
+    let id;
     switch (hash) {
         case '':
         case '#main':
@@ -93,7 +91,7 @@ function getShineButtons(buttons, hash) {
     }
     shineButtons(buttons, id);
 }
-var content = getContentFromHash(hash);
+let content = getContentFromHash(hash);
 try {
     textToText(content, text);
 }
@@ -102,10 +100,10 @@ catch (e) {
 }
 clickToHash(buttons);
 getShineButtons(buttons, hash);
-window.addEventListener('hashchange', function () {
+window.addEventListener('hashchange', () => {
     hash = window.location.hash;
     console.log(hash);
-    var content = getContentFromHash(hash);
+    let content = getContentFromHash(hash);
     getShineButtons(buttons, hash);
     try {
         textToText(content, text);
