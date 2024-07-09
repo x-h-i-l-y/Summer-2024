@@ -116,6 +116,7 @@ try {
 clickToHash(buttons)
 getShineButtons(buttons, hash)
 
+
 window.addEventListener('hashchange', () => {
     hash = window.location.hash
     console.log(hash)
