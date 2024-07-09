@@ -1,4 +1,3 @@
-"use strict";
 let lists = {
     main: `<div>This is the main page</div>`,
     second: `<div>This is the second page</div>`,
@@ -7,11 +6,7 @@ let lists = {
     fifth: `<div>This is the fifth page</div>`,
     other: `<div>Sorry, I can't find that page.</div>`,
 };
-console.log(window.location);
-const buttons = document.querySelectorAll(".buttons");
-const text = document.querySelector("#text");
-let hash = window.location.hash;
-function getContentFromHash(hash) {
+export function getContentFromHash(hash) {
     let contents;
     switch (hash) {
         case '':
@@ -35,7 +30,7 @@ function getContentFromHash(hash) {
     }
     return contents;
 }
-function clickToHash(buttons) {
+export function clickToHash(buttons, hash) {
     // let choosing: boolean[] = new Array(buttons.length)
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
@@ -59,7 +54,7 @@ function shineButtons(buttons, idChosen) {
         }
     }
 }
-function textToText(text, element) {
+export function textToText(text, element) {
     if (element !== null) {
         element.innerHTML = text;
     }
@@ -67,7 +62,7 @@ function textToText(text, element) {
         throw "Error: No id called \'text\'!";
     }
 }
-function getShineButtons(buttons, hash) {
+export function getShineButtons(buttons, hash) {
     let id;
     switch (hash) {
         case '':
@@ -91,6 +86,9 @@ function getShineButtons(buttons, hash) {
     }
     shineButtons(buttons, id);
 }
+const buttons = document.querySelectorAll(".buttons");
+const text = document.querySelector("#text");
+let hash = window.location.hash;
 let content = getContentFromHash(hash);
 try {
     textToText(content, text);
@@ -98,7 +96,7 @@ try {
 catch (e) {
     console.error(e);
 }
-clickToHash(buttons);
+clickToHash(buttons, hash);
 getShineButtons(buttons, hash);
 window.addEventListener('hashchange', () => {
     hash = window.location.hash;

@@ -14,14 +14,7 @@ let lists: {
     other: `<div>Sorry, I can't find that page.</div>`,
 }
 
-console.log(window.location)
-
-const buttons: NodeListOf<Element> = document.querySelectorAll(".buttons")
-const text: Element | null = document.querySelector("#text")
-
-let hash: string = window.location.hash;
-
-function getContentFromHash(hash: string): string {
+export function getContentFromHash(hash: string): string {
     let contents: string
     switch (hash) {
         case '':
@@ -47,8 +40,8 @@ function getContentFromHash(hash: string): string {
     return contents
 }
 
-function clickToHash(buttons: NodeListOf<Element>): void {
-    // let choosing: boolean[] = new Array(buttons.length)
+export function clickToHash(buttons: NodeListOf<Element>, hash: string): void {
+     // let choosing: boolean[] = new Array(buttons.length)
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             if (i === 0) {
@@ -73,7 +66,7 @@ function shineButtons(buttons: NodeListOf<Element>, idChosen: number): void {
     }
 }
 
-function textToText(text: string, element: Element | null): void {
+export function textToText(text: string, element: Element | null): void {
     if (element !== null) {
         element.innerHTML = text
     } else {
@@ -81,7 +74,7 @@ function textToText(text: string, element: Element | null): void {
     }
 }
 
-function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
+export function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
     let id: number
     switch (hash) {
         case '':
@@ -106,6 +99,11 @@ function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
     shineButtons(buttons, id)
 }
 
+const buttons: NodeListOf<Element> = document.querySelectorAll(".buttons")
+const text: Element | null = document.querySelector("#text")
+
+let hash: string = window.location.hash;
+
 let content: string = getContentFromHash(hash)
 try {
     textToText(content, text)
@@ -113,9 +111,8 @@ try {
     console.error(e)
 }
 
-clickToHash(buttons)
+clickToHash(buttons, hash)
 getShineButtons(buttons, hash)
-
 
 window.addEventListener('hashchange', () => {
     hash = window.location.hash
