@@ -42,7 +42,7 @@ function getContentFromHash(hash: string): string {
 
 function clickToHash(buttons: NodeListOf<Element>, hash: string): void {
     // let choosing: boolean[] = new Array(buttons.length)
-    for (let i = 0; i < buttons.length; i++) {
+    for (let i: number = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             if (i === 0) {
                 hash = '#/main'
