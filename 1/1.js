@@ -70,7 +70,7 @@ function textToText(text, element) {
     }
 }
 function getShineButtons(buttons, hash) {
-    var id = 0;
+    var id;
     switch (hash) {
         case '':
         case '#main':
