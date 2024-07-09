@@ -1,0 +1,72 @@
+body, html {
+    font-family: Bahnschrift, serif;
+    /*background-color: rgba(146,253,255,0.08);*/
+}
+
+#bigPart {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    /*border: 1px solid grey;*/
+    border-radius: 20px;
+}
+
+#buttonsPart {
+    position: relative;
+    /*left: 100px;*/
+    /*right: 100px;*/
+    width: 600px;
+    height: 50px;
+    top: 20px;
+    margin: 0 auto;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+}
+
+.buttons {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    /*left: 50px;*/
+    width: 100px;
+    height: 30px;
+    border: 1px grey solid;
+    margin: auto;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+}
+
+.chosen {
+    /*background-color: rgba(83,144,145,0.48);*/
+    background-color: green;
+}
+
+#wordPart {
+    position: relative;
+    top: 40px;
+    border: 1px solid black;
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    display: flex;
+}
+
+#text {
+    position: relative;
+    /*width: 600px;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-weight: bold;
+    font-size: 48px;
+}
