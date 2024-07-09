@@ -82,7 +82,7 @@ function textToText(text: string, element: Element | null): void {
 }
 
 function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
-    let id: number = 0
+    let id: number
     switch (hash) {
         case '':
         case '#main':
