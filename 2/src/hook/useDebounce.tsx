@@ -9,7 +9,6 @@ export default function useDebounce<T extends (...args: any[]) => any>(fn: T, de
                 clearTimeout(timer.current);
             }
 
-            // 设置新的定时器
             timer.current = setTimeout(() => {
                 fn(args)
                 timer.current = undefined;
