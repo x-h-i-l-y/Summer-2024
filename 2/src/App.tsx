@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {forwardRef, LegacyRef, useRef, useState} from 'react'
 import './App.css'
+import useDebounce from "./hook/useDebounce.tsx";
+import useThrottle from "./hook/useThrottle.tsx";
+
+const MyInput =
+    forwardRef((props, ref: LegacyRef<HTMLInputElement>) => {
+        return (
+            <input className={'inputBox'}
+                   {...props}
+                   ref={ref}
+            />
+        )
+    })
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [wordsInput, setWordsInput] = useState<string>('')
+    const inputBox = useRef<HTMLInputElement>(null)
+    const inputBox2 = useRef<HTMLInputElement>(null)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div id={'main'}>
+            <div id={"showWords"}>
+                <div id={"word"}>You input:</div>
+                <div id={"input"}>{wordsInput}</div>
+            </div>
+            <div className={"buttonAndInput"}>
+                <MyInput ref={inputBox}></MyInput>
+                <button className={'button'} onClick={useThrottle(() => {
+                    if (inputBox.current) {
+                        setWordsInput(inputBox.current.value + '  (From 1)');
+                        console.log(inputBox.current.value)
+                    }
+                }, 500)}>
+                    Submit
+                </button>
+            </div>
+            <div className={"buttonAndInput"} id={'second'}>
+                <MyInput ref={inputBox2}></MyInput>
+                <button className={'button'} onClick={useDebounce(() => {
+                    if (inputBox2.current) {
+                        setWordsInput(inputBox2.current.value + '  (From 2)');
+                        console.log(inputBox2.current.value)
+                    }
+                }, 500)}>
+                    Submit
+                </button>
+            </div>
+        </div>
+    )
 }
+
 
 export default App

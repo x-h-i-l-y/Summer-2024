@@ -1,42 +1,70 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body, html {
+    background-color: white;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#main {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    /*border: 1px solid grey;*/
+    border-radius: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#showWords {
+    position: relative;
+    /*top: 50px;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
 }
 
-.card {
-  padding: 2em;
+#word {
+    width: 200px;
+    position: relative;
+    /*top: 70px;*/
+    left: 0;
+    right: 0;
+    /*margin: 0 auto;*/
 }
 
-.read-the-docs {
-  color: #888;
+#input {
+    width: fit-content;
+    height: 25px;
+    overflow: auto;
+    border-bottom: 1px solid grey;
+}
+
+.button, #inputBox {
+    position: relative;
+    font-size: 13px;
+
+}
+
+.button {
+    position: relative;
+    font-size: 13px;
+}
+
+.buttonAndInput {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+}
+
+.inputBox {
+    top: 5px;
+    height: 15px;
+}
+
+#second {
+    position: absolute;
+    top: 100px;
 }
