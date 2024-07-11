@@ -31,6 +31,7 @@ function App() {
                         setWordsInput(inputBox.current.value + '  (From 1)');
                         console.log(inputBox.current.value)
                     }
+
                 }, 500)}>
                     Submit
                 </button>
