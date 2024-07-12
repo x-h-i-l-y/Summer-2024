@@ -93,4 +93,4 @@ class MyFetchWithInterceptors {
 }
 
 let fetches: MyFetchWithInterceptors = new MyFetchWithInterceptors('xxx.com')
-fetches.put().then()
+fetches.url = 'x'
