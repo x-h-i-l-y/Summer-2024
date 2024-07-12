@@ -1,21 +1,20 @@
 import { IOptions, RequestInterceptor, ResponseInterceptor } from "./type/type"
 
 class MyFetchWithInterceptors {
-    url : string
-    option ?: IOptions
+    // url : string
+    // option? : IOptions
     requestInterceptors : RequestInterceptor[] = []
     responseInterceptors : ResponseInterceptor[] = []
+    // constructor(url : string, option? : IOptions) {
+    //     this.url = url
+    //     this.option = option
+    // }
 
-    constructor(url : string, option? : IOptions) {
-        this.url = url
-        this.option = option
-    }
-
-    requestInterceptor(interceptor : RequestInterceptor) {
+    requestInterceptor(interceptor : RequestInterceptor) : void {
         this.requestInterceptors.push(interceptor)
     }
 
-    responseInterceptor(interceptor : ResponseInterceptor) {
+    responseInterceptor(interceptor : ResponseInterceptor) : void {
         this.responseInterceptors.push(interceptor)
     }
 
@@ -50,22 +49,19 @@ class MyFetchWithInterceptors {
         return response
     }
 
-    // override
-    async get() : Promise<Response> {
-        return this.myFetchWithInterceptors(this.url, { ...this.option, method: 'GET' })
+    async get(url : string, option ? : IOptions) : Promise<Response> {
+        return this.myFetchWithInterceptors(url, { ...option, method: 'GET' })
     }
 
-    async post() : Promise<Response> {
-        return this.myFetchWithInterceptors(this.url, { ...this.option, method: 'POST' })
+    async post(url : string, option ? : IOptions) : Promise<Response> {
+        return this.myFetchWithInterceptors(url, { ...option, method: 'POST' })
     }
 
-    async put() : Promise<Response> {
-        return this.myFetchWithInterceptors(this.url, { ...this.option, method: 'PUT' })
+    async put(url : string, option ? : IOptions) : Promise<Response> {
+        return this.myFetchWithInterceptors(url, { ...option, method: 'PUT' })
     }
 
-    async delete() : Promise<Response> {
-        return this.myFetchWithInterceptors(this.url, { ...this.option, method: 'DELETE' })
+    async delete(url : string, option ? : IOptions) : Promise<Response> {
+        return this.myFetchWithInterceptors(url, { ...option, method: 'DELETE' })
     }
 }
-
-let fetches: MyFetchWithInterceptors = new MyFetchWithInterceptors('xxx.com')
