@@ -24,7 +24,7 @@ function getContentFromHash(hash: string): string {
         case '#/2':
             contents = lists.second
             break
-        case '#/3':
+        case '#/4':
             contents = lists.third
             break
         case '#/4':
@@ -84,7 +84,7 @@ function getShineButtons(buttons: NodeListOf<Element>, hash: string): void {
         case '#/2':
             id = 1
             break
-        case '#/3':
+        case '#/4':
             id = 2
             break
         case '#/4':
