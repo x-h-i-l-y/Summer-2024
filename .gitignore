@@ -9,4 +9,4 @@
 /*/node_modules
 /*/.idea
 .gitignore
-/3/fetch.js
+/3/*.js
