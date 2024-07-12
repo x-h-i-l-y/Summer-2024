@@ -10,6 +10,7 @@ class MyFetchWithInterceptors {
     //     this.option = option
     // }
 
+
     requestInterceptor(interceptor : RequestInterceptor) : void {
         this.requestInterceptors.push(interceptor)
     }
